@@ -55,7 +55,9 @@ text-decoration: inherit;
 box-sizing: border-box;
 }
 
-
+body {
+background-color: #E5E5E5;
+}
 `;
 
 export default GlobalStyle;
