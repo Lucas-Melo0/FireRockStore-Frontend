@@ -47,7 +47,6 @@ const Signup = () => {
           name="confirmation"
           placeholder="Confirme a senha"
         ></FormInput>
-
         <FormButton>Cadastrar</FormButton>
       </CustomForm>
       <Link to={"/entrada"}>
