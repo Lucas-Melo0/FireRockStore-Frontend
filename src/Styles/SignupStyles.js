@@ -10,10 +10,16 @@ const SignupContainer = styled.div`
   margin: 0 auto;
 
   p {
+    text-align: center;
+    margin-top: 25px;
+    color: #ffffff;
+  }
+  h1 {
     font-family: "Rubik Moonrocks", cursive;
     text-align: center;
     margin-top: 25px;
     font-size: 35px;
+    cursor: pointer;
   }
 `;
 
