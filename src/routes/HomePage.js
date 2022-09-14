@@ -1,0 +1,3 @@
+const HomePage = () => {};
+
+export { HomePage };
