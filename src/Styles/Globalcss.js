@@ -55,7 +55,10 @@ text-decoration: inherit;
 box-sizing: border-box;
 }
 
-
+body {
+font-family: 'Roboto', sans-serif;
+background-color: #8C11BE;
+}
 `;
 
 export default GlobalStyle;
