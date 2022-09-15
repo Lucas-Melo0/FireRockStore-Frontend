@@ -53,6 +53,7 @@ text-decoration: inherit;
 }
 * {
 box-sizing: border-box;
+cursor: default;
 }
 
 body {
