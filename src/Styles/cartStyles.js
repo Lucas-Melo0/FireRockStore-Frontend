@@ -4,10 +4,9 @@ const CartWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
   width: 350px;
-  min-height: 600px;
-  max-height: 600px;
+  min-height: 80vh;
+  max-height: 80vh;
   overflow-y: auto;
   z-index: 1;
   row-gap: 10px;
@@ -32,6 +31,9 @@ const CartHeader = styled.div`
   height: 40px;
   p {
     font-size: 23px;
+  }
+  h5 {
+    cursor: pointer;
   }
 `;
 

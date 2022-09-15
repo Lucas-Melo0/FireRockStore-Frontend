@@ -13,6 +13,7 @@ import {
   CardItemHeader,
   CardItemPrice,
 } from "../Styles/cartStyles";
+import { CheckoutButton } from "../Components/buttons/CheckoutButton";
 
 const HomePage = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -30,23 +31,72 @@ const HomePage = () => {
 
   return (
     <>
-      <CartWrapper isOpen={isCartOpen}>
-        <CartHeader>
-          <p>Shopping Cart</p>
-          <h5 onClick={() => setIsCartOpen(false)}>X</h5>
-        </CartHeader>
-        <CartItemContainer>
-          <CardItemHeader>
-            <h3>X</h3>
-          </CardItemHeader>
-          <img src={mockItens.image}></img>
-          <p>{mockItens.description}</p>
-          <CardItemPrice>
-            <h5>R$ {mockItens.price} </h5>
-          </CardItemPrice>
-          <h4>Subtotal : R$ 2500</h4>
-        </CartItemContainer>
-      </CartWrapper>
+      {isCartOpen && (
+        <CartWrapper isOpen={isCartOpen}>
+          <CartHeader>
+            <p>Shopping Cart</p>
+            <h5 onClick={() => setIsCartOpen(false)}>X</h5>
+          </CartHeader>
+          <CartItemContainer>
+            <CardItemHeader>
+              <h3>X</h3>
+            </CardItemHeader>
+            <img src={mockItens.image}></img>
+            <p>{mockItens.description}</p>
+            <CardItemPrice>
+              <h5>R$ {mockItens.price} </h5>
+            </CardItemPrice>
+            <h4>Subtotal : R$ 2500</h4>
+          </CartItemContainer>
+          <CartItemContainer>
+            <CardItemHeader>
+              <h3>X</h3>
+            </CardItemHeader>
+            <img src={mockItens.image}></img>
+            <p>{mockItens.description}</p>
+            <CardItemPrice>
+              <h5>R$ {mockItens.price} </h5>
+            </CardItemPrice>
+            <h4>Subtotal : R$ 2500</h4>
+          </CartItemContainer>
+          <CartItemContainer>
+            <CardItemHeader>
+              <h3>X</h3>
+            </CardItemHeader>
+            <img src={mockItens.image}></img>
+            <p>{mockItens.description}</p>
+            <CardItemPrice>
+              <h5>R$ {mockItens.price} </h5>
+            </CardItemPrice>
+            <h4>Subtotal : R$ 2500</h4>
+          </CartItemContainer>
+          <CartItemContainer>
+            <CardItemHeader>
+              <h3>X</h3>
+            </CardItemHeader>
+            <img src={mockItens.image}></img>
+            <p>{mockItens.description}</p>
+            <CardItemPrice>
+              <h5>R$ {mockItens.price} </h5>
+            </CardItemPrice>
+            <h4>Subtotal : R$ 2500</h4>
+          </CartItemContainer>
+          <CartItemContainer>
+            <CardItemHeader>
+              <h3>X</h3>
+            </CardItemHeader>
+            <img src={mockItens.image}></img>
+            <p>{mockItens.description}</p>
+            <CardItemPrice>
+              <h5>R$ {mockItens.price} </h5>
+            </CardItemPrice>
+            <h4>Subtotal : R$ 2500</h4>
+          </CartItemContainer>
+          <h3>Total : xxxxx</h3>
+          <CheckoutButton>Close order</CheckoutButton>
+        </CartWrapper>
+      )}
+
       <HomePageStyles>
         <header>
           <aside>
