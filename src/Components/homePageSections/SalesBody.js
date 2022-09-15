@@ -7,7 +7,7 @@ export default function SalesBody() {
       <StyledBoxes>
         <header>
           <aside>
-            <h1>Hello, Fulano</h1>
+            <h4>Insane Mugs</h4>
 
             <h3>See all</h3>
           </aside>
@@ -35,7 +35,7 @@ export default function SalesBody() {
       <StyledBoxes>
         <header>
           <aside>
-            <h1>Hello, Fulano</h1>
+            <h4>Mad Rock Vinyls</h4>
 
             <h3>See all</h3>
           </aside>

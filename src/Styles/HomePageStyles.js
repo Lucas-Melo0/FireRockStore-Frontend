@@ -6,13 +6,17 @@ const HomePageStyles = styled.main`
   height: 100%;
   background-color: #1b0b23;
   padding-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;
   }
   header {
     width: 100%;
-    height: 54px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +27,7 @@ const HomePageStyles = styled.main`
     justify-content: center;
     gap: 10px;
     p {
-      font-size: 25px;
+      font-size: 30px;
       color: #ffffff;
     }
   }
@@ -34,19 +38,30 @@ const HomePageStyles = styled.main`
     align-items: center;
     justify-content: space-between;
     border-radius: 5px;
-
+    padding-bottom: 10px;
+    padding-top: 5px;
     h1 {
-      font-size: 26px;
+      font-size: 35px;
       font-weight: 700;
       color: #ffffff;
       padding: 25px 0 22px 3px;
+      cursor: pointer;
     }
     div {
       padding: 20px 3px 22px 0;
+
       div {
-        font-size: 24px;
+        font-size: 28px;
         color: #ffffff;
         font-weight: 600;
+        cursor: pointer;
+
+        ion-icon[name="cart-outline"] {
+          cursor: pointer;
+        }
+        ion-icon[name="menu-outline"] {
+          cursor: pointer;
+        }
       }
     }
 

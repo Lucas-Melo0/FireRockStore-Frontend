@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledHeader = styled.div`
   min-width: 326px;
   width: 100%;
-  max-height: 446px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ const StyledHeader = styled.div`
   nav {
     min-width: 326px;
     width: 90%;
-    height: 150px;
+    height: 200px;
     background-color: #ffffff;
     border-radius: 5px;
     display: flex;

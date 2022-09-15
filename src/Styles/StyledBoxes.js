@@ -13,20 +13,28 @@ const StyledBoxes = styled.div`
 
   header {
     width: 100%;
-    height: 30px;
+    height: 20px;
 
+    h4 {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 25px;
+      padding-right: 5px;
+      cursor: pointer;
+    }
     h3 {
       color: #ffffff;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 17px;
       text-decoration: underline;
       padding-right: 5px;
+      cursor: pointer;
     }
   }
 
   span {
-    padding: 15px 0 15px 20px;
-    background-color: #361b54;
+    padding: 0 0 15px 0;
+    background-color: #1b0b23; //#361b54;
     min-width: 326px;
     width: 90%;
     display: flex;
@@ -50,16 +58,18 @@ const StyledBoxes = styled.div`
     align-items: flex-start;
     justify-content: space-around;
     box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
-
+    cursor: pointer;
     h5 {
       font-size: 16px;
       padding: 3px 0 2px 5px;
       color: #ffffff;
+      cursor: pointer;
     }
     h6 {
       padding: 3px 0 5px 5px;
       border-radius: 5px;
       color: #ffffff;
+      cursor: pointer;
     }
   }
   section {
@@ -71,12 +81,13 @@ const StyledBoxes = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
+    cursor: pointer;
     img {
       width: 172px;
       height: 216px;
       border-radius: 9px;
       object-fit: cover;
+      cursor: pointer;
     }
   }
 `;
