@@ -3,17 +3,17 @@ import styled from "styled-components";
 const StyledHeader = styled.div`
   min-width: 326px;
   width: 100%;
-  height: 200px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1b0b23;
+  background-color: #000000;
   gap: 20px;
 
   nav {
     min-width: 326px;
     width: 90%;
-    height: 200px;
+    height: 350px;
     background-color: #ffffff;
     border-radius: 5px;
     display: flex;
@@ -25,7 +25,7 @@ const StyledHeader = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 50% 100;
+      //object-position: 50% 100;
       border-radius: 5px;
     }
   }

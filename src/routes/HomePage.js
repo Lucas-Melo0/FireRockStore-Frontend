@@ -1,10 +1,8 @@
-import HomePageStyles from "../Styles/HomePageStyles";
-import HeaderOne from "../Components/homePageSections/HeaderOne";
-import HeaderTwo from "../Components/homePageSections/SecondHeader";
-import HeaderThree from "../Components/homePageSections/ThirdHeader";
+import StyledHP from "../Styles/StyledHomePage";
+import Banner from "../Components/homePageSections/Banner";
 import SalesBody from "../Components/homePageSections/SalesBody";
-import StyledPopUp from "../Styles/StyledRegisterPopUp";
-import { Link } from "react-router-dom";
+import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
+import Top from "../Components/homePageSections/Top";
 import { useState } from "react";
 import {
   CartWrapper,
@@ -97,8 +95,12 @@ const HomePage = () => {
         </CartWrapper>
       )}
 
-      <HomePageStyles>
-        <header>
+      <RegisterPopUp />
+      <StyledHP>
+        <Top />
+
+        {/* <HomePageStyles> */}
+        {/* <header>
           <aside>
             <h1>🔥 Rock Store</h1>
             <div>
@@ -110,30 +112,12 @@ const HomePage = () => {
               </div>
             </div>
           </aside>
-        </header>
+        </header> */}
 
-        <StyledPopUp>
-          <span>
-            <Link to={`/entrada`}>
-              <div> Sign In </div>
-            </Link>
-            <Link to={`/cadastro`}>
-              <div> Sign Up </div>
-            </Link>
-          </span>
-        </StyledPopUp>
-
-        <HeaderOne />
-        {/* <HeaderTwo /> */}
-        {/* <HeaderThree /> */}
-        <div>
-          <p>•</p>
-          <p>•</p>
-          <p>•</p>
-        </div>
+        <Banner />
 
         <SalesBody />
-      </HomePageStyles>
+      </StyledHP>
     </>
   );
 };

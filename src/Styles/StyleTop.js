@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const HomePageStyles = styled.main`
+const StyleTop = styled.main`
   min-width: 375px;
   width: 100%;
-  height: 100%;
-  background-color: #1b0b23;
+  height: 60px;
+  background-color: #000000;
   padding-bottom: 20px;
   position: absolute;
   top: 0;
@@ -26,10 +26,6 @@ const HomePageStyles = styled.main`
     align-items: center;
     justify-content: center;
     gap: 10px;
-    p {
-      font-size: 30px;
-      color: #ffffff;
-    }
   }
 
   aside {
@@ -38,7 +34,6 @@ const HomePageStyles = styled.main`
     align-items: center;
     justify-content: space-between;
     border-radius: 5px;
-    padding-bottom: 10px;
     padding-top: 5px;
     h1 {
       font-size: 35px;
@@ -48,11 +43,12 @@ const HomePageStyles = styled.main`
       cursor: pointer;
     }
     div {
-      padding: 20px 3px 22px 0;
+      padding: 20px 3px 10px 0;
 
       div {
         font-size: 28px;
         color: #ffffff;
+        opacity: 0.9;
         font-weight: 600;
         cursor: pointer;
 
@@ -64,15 +60,7 @@ const HomePageStyles = styled.main`
         }
       }
     }
-
-    img {
-      width: 54px;
-      height: 54px;
-      border-radius: 10px;
-      padding: 10px 0 10px 0;
-      object-fit: cover;
-    }
   }
 `;
 
-export default HomePageStyles;
+export default StyleTop;
