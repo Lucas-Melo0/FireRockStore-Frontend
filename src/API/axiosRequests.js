@@ -4,7 +4,7 @@ const userSignup = (data) => {
   return axiosBase.post("/signup", data);
 };
 const userSignin = (data) => {
-  return axiosBase.post(data);
+  return axiosBase.post("/login", data);
 };
 
 export { userSignup, userSignin };

@@ -2,12 +2,22 @@ import { SignupContainer } from "../Styles/SignupStyles";
 import { FormButton } from "../Components/buttons/FormButton";
 import { CustomForm } from "../Components/form/CustomForm";
 import { FormInput } from "../Components/form/FormInput";
+import { userSignin } from "../API/axiosRequests";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const Signin = () => {
   const [form, setForm] = useState({});
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await userSignin(form);
+      localStorage.setItem("auth", JSON.stringify(data));
+      navigate("/");
+    } catch (err) {
+      const { status } = err.response;
+      if (status === 404) return alert("Email ou senha incorretos.");
+    }
   };
   const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
