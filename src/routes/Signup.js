@@ -3,16 +3,27 @@ import { FormButton } from "../Components/buttons/FormButton";
 import { CustomForm } from "../Components/form/CustomForm";
 import { FormInput } from "../Components/form/FormInput";
 import { SignupContainer } from "../Styles/SignupStyles";
+import { useNavigate } from "react-router-dom";
+import { userSignup } from "../API/axiosRequests";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [form, setForm] = useState({});
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await userSignup(form);
+      navigate("/entrada");
+    } catch (err) {
+      const { status } = err.response;
+      if (status === 409) return alert("Nome ou email já existentes");
+      console.log(err);
+    }
   };
   const handleForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form);
   };
 
   return (
