@@ -3,7 +3,7 @@ import Banner from "../Components/homePageSections/Banner";
 import SalesBody from "../Components/homePageSections/SalesBody";
 import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
 import Top from "../Components/homePageSections/Top";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CartWrapper,
   CartHeader,
@@ -11,20 +11,31 @@ import {
   CardItemHeader,
   CardItemPrice,
 } from "../Styles/cartStyles";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { getProducts } from "../API/axiosRequests";
 import { CheckoutButton } from "../Components/buttons/CheckoutButton";
 
 const HomePage = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [productList, setProductList] = useState([]);
+  const [cartItens, setCartItens] = useState(
+    () => JSON.parse(localStorage.getItem("cart")) ?? []
+  );
+
+  useEffect(() => {
+    getProducts().then((products) => setProductList(products.data));
+  }, []);
+
   const handleCart = () => {
     setIsCartOpen(true);
-    console.log(isCartOpen);
   };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItens));
+  }, [cartItens]);
 
-  const mockItens = {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/115385/monitor-gamer-husky-hailstorm-led-31-5-widescreen-curvo-fhd-hmdi-dp-165hz-1ms-freesync-mo-hhs-32c_1608647420_gg.jpg",
-    price: 1200.4,
-    description: "Televisao 25 polegadas ",
+  const removeItens = (id) => {
+    const removeId = cartItens.filter((itens) => itens._id !== id);
+    setCartItens(removeId);
   };
 
   return (
@@ -35,62 +46,24 @@ const HomePage = () => {
             <p>Shopping Cart</p>
             <h5 onClick={() => setIsCartOpen(false)}>X</h5>
           </CartHeader>
-          <CartItemContainer>
-            <CardItemHeader>
-              <h3>X</h3>
-            </CardItemHeader>
-            <img src={mockItens.image}></img>
-            <p>{mockItens.description}</p>
-            <CardItemPrice>
-              <h5>R$ {mockItens.price} </h5>
-            </CardItemPrice>
-            <h4>Subtotal : R$ 2500</h4>
-          </CartItemContainer>
-          <CartItemContainer>
-            <CardItemHeader>
-              <h3>X</h3>
-            </CardItemHeader>
-            <img src={mockItens.image}></img>
-            <p>{mockItens.description}</p>
-            <CardItemPrice>
-              <h5>R$ {mockItens.price} </h5>
-            </CardItemPrice>
-            <h4>Subtotal : R$ 2500</h4>
-          </CartItemContainer>
-          <CartItemContainer>
-            <CardItemHeader>
-              <h3>X</h3>
-            </CardItemHeader>
-            <img src={mockItens.image}></img>
-            <p>{mockItens.description}</p>
-            <CardItemPrice>
-              <h5>R$ {mockItens.price} </h5>
-            </CardItemPrice>
-            <h4>Subtotal : R$ 2500</h4>
-          </CartItemContainer>
-          <CartItemContainer>
-            <CardItemHeader>
-              <h3>X</h3>
-            </CardItemHeader>
-            <img src={mockItens.image}></img>
-            <p>{mockItens.description}</p>
-            <CardItemPrice>
-              <h5>R$ {mockItens.price} </h5>
-            </CardItemPrice>
-            <h4>Subtotal : R$ 2500</h4>
-          </CartItemContainer>
-          <CartItemContainer>
-            <CardItemHeader>
-              <h3>X</h3>
-            </CardItemHeader>
-            <img src={mockItens.image}></img>
-            <p>{mockItens.description}</p>
-            <CardItemPrice>
-              <h5>R$ {mockItens.price} </h5>
-            </CardItemPrice>
-            <h4>Subtotal : R$ 2500</h4>
-          </CartItemContainer>
-          <h3>Total : xxxxx</h3>
+
+          {cartItens.map((value) => {
+            return (
+              <CartItemContainer>
+                <CardItemHeader>
+                  <h3 onClick={() => removeItens(value._id)}>X</h3>
+                </CardItemHeader>
+                <img src={value.image}></img>
+                <p>{value.name}</p>
+                <CardItemPrice>
+                  <h5>R$ {value.price} </h5> <IoIosArrowBack /> 1
+                  <IoIosArrowForward />
+                </CardItemPrice>
+                <h4>Subtotal : R$ 2500</h4>
+              </CartItemContainer>
+            );
+          })}
+
           <CheckoutButton>Close order</CheckoutButton>
         </CartWrapper>
       )}
