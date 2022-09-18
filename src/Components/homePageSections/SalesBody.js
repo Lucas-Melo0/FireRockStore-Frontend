@@ -35,7 +35,6 @@ export default function SalesBody() {
               <Link to={`/productlist`} state={i.category}>
                 <h4>{i.title}</h4>
               </Link>
-
               <Link to={`/productlist`} state={i.category}>
                 <h3>See all</h3>
               </Link>
@@ -43,7 +42,7 @@ export default function SalesBody() {
           </header>
 
           <span>
-            {i.products.map((item, index) => (
+            {i?.products?.map((item, index) => (
               <Link to={`/product`} state={item}>
                 <nav>
                   <section>

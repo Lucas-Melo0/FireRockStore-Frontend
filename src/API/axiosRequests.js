@@ -7,4 +7,8 @@ const userSignin = (data) => {
   return axiosBase.post("/login", data);
 };
 
-export { userSignup, userSignin };
+const getProducts = () => {
+  return axiosBase.get("/");
+};
+
+export { userSignup, userSignin, getProducts };

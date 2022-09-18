@@ -11,17 +11,36 @@ import { useState } from "react";
 function App() {
   const [category, setCategory] = useState(null);
   const [visibility, setVisibility] = useState("hidden");
+  const [cartItens, setCartItens] = useState(
+    () => JSON.parse(localStorage.getItem("cart")) ?? []
+  );
+
   return (
     <productContext.Provider
       value={{ category, setCategory, setVisibility, visibility }}
     >
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <HomePage cartItens={cartItens} setCartItens={setCartItens} />
+          }
+        />
         <Route path="/cadastro" element={<Signup />} />
         <Route path="/entrada" element={<Signin />} />
-        <Route path="/productlist" element={<ProductList />} />
-        <Route path="/product" element={<Product />} />
+        <Route
+          path="/productlist"
+          element={
+            <ProductList cartItens={cartItens} setCartItens={setCartItens} />
+          }
+        />
+        <Route
+          path="/product"
+          element={
+            <Product cartItens={cartItens} setCartItens={setCartItens} />
+          }
+        />
       </Routes>
     </productContext.Provider>
   );

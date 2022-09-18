@@ -62,13 +62,17 @@ const CardItemHeader = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   padding: 5px;
+  h3 {
+    cursor: pointer;
+  }
 `;
 
 const CardItemPrice = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: space-around;
+  column-gap: 6px;
+  justify-content: center;
 `;
 
 export {

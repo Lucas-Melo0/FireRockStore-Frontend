@@ -4,12 +4,17 @@ import Banner from "../Components/homePageSections/Banner";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
 import LoadingImg from "../Styles/LoadingImg";
 import { useLocation } from "react-router-dom";
 
-export default function ProductList() {
+export default function ProductList({ cartItens, setCartItens }) {
   const location = useLocation();
   const [products, setProducts] = useState(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const handleCart = () => {
+    setIsCartOpen(true);
+  };
 
   useEffect(() => {
     const promise = axios.get("http://localhost:5000/productlist");
@@ -30,7 +35,15 @@ export default function ProductList() {
 
   return (
     <>
-      <Top />
+      {isCartOpen && (
+        <CheckoutCart
+          cartItens={cartItens}
+          setCartItens={setCartItens}
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+        />
+      )}
+      <Top handleCart={handleCart} />
       <Banner />
       <StyledProductList>
         <div>All the products in this category</div>

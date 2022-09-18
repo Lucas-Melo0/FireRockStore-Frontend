@@ -1,15 +1,30 @@
 import StyledProduct from "../Styles/StyledProduct";
 import Top from "../Components/homePageSections/Top";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
 
-export default function Product() {
+export default function Product({ cartItens, setCartItens }) {
   const location = useLocation();
-
-  console.log(location.state);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const handleCart = () => {
+    setIsCartOpen(true);
+  };
+  const addItens = (iten) => {
+    setCartItens([...cartItens, iten]);
+  };
 
   return (
     <>
-      <Top />
+      {isCartOpen && (
+        <CheckoutCart
+          cartItens={cartItens}
+          setCartItens={setCartItens}
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+        />
+      )}
+      <Top handleCart={handleCart} />
 
       <StyledProduct>
         <header>
@@ -29,7 +44,7 @@ export default function Product() {
             <h2>Description</h2>
             <p>{location.state.description}</p>
             <footer>
-              <nobr>Add to cart</nobr>
+              <nobr onClick={() => addItens(location.state)}>Add to cart</nobr>
             </footer>
           </span>
         </header>
