@@ -23,6 +23,18 @@ const CheckoutCart = ({
     );
     setCartItens(removeId);
   };
+
+  const itensSum = () => {
+    let result = 0;
+    cartItens.map((iten) => (result += iten.price));
+    return result;
+  };
+
+  const checkoutOrder = () => {
+    setCartItens([]);
+    setIsCartOpen(false);
+  };
+
   return (
     <CartWrapper isOpen={isCartOpen}>
       <CartHeader>
@@ -43,8 +55,8 @@ const CheckoutCart = ({
           </CartItemContainer>
         );
       })}
-      <h3>Total </h3>
-      <CheckoutButton>Close order</CheckoutButton>
+      <h3>Total: {itensSum()} </h3>
+      <CheckoutButton onClick={checkoutOrder}>Close order</CheckoutButton>
     </CartWrapper>
   );
 };
