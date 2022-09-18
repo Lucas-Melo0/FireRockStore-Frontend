@@ -1,64 +1,62 @@
+import { useEffect, useState, useContext } from "react";
 import StyledBoxes from "../../Styles/StyledBoxes";
 import StyledGap from "../../Styles/StyledGap";
+import axios from "axios";
+import LoadingImg from "../../Styles/LoadingImg";
+import { Link } from "react-router-dom";
+import productContext from "./Context";
 
 export default function SalesBody() {
+  const [products, setProducts] = useState(null);
+  const { setCategory } = useContext(productContext);
+
+  useEffect(() => {
+    const promise = axios.get("http://localhost:5000");
+    promise.then((res) => {
+      setProducts(res.data);
+      setCategory(res.data);
+    });
+  }, []);
+
+  if (products === null) {
+    return (
+      <LoadingImg>
+        <img src="https://bit.ly/3zAxhsA" alt="Loading" />
+      </LoadingImg>
+    );
+  }
+
   return (
     <StyledGap>
-      <StyledBoxes>
-        <header>
-          <aside>
-            <h4>Insane Mugs</h4>
+      {products.map((i, index) => (
+        <StyledBoxes key={index}>
+          <header>
+            <aside>
+              <Link to={`/productlist`} state={i.category}>
+                <h4>{i.title}</h4>
+              </Link>
 
-            <h3>See all</h3>
-          </aside>
-        </header>
+              <Link to={`/productlist`} state={i.category}>
+                <h3>See all</h3>
+              </Link>
+            </aside>
+          </header>
 
-        <span>
-          <nav>
-            <section>
-              <img src="https://bit.ly/3BGmIGo" />
-            </section>
-            <h5>Halloween Mug</h5>
-            <h6>$80,50</h6>
-          </nav>
-
-          <nav>
-            <section>
-              <img src="https://bit.ly/3BGmIGo" />
-            </section>
-            <h5>Halloween Mug</h5>
-            <h6>$80,50</h6>
-          </nav>
-        </span>
-      </StyledBoxes>
-
-      <StyledBoxes>
-        <header>
-          <aside>
-            <h4>Mad Rock Vinyls</h4>
-
-            <h3>See all</h3>
-          </aside>
-        </header>
-
-        <span>
-          <nav>
-            <section>
-              <img src="https://bit.ly/3BGmIGo" />
-            </section>
-            <h5>Halloween Mug</h5>
-            <h6>$80,50</h6>
-          </nav>
-
-          <nav>
-            <section>
-              <img src="https://bit.ly/3BGmIGo" />
-            </section>
-            <h5>Halloween Mug</h5>
-            <h6>$80,50</h6>
-          </nav>
-        </span>
-      </StyledBoxes>
+          <span>
+            {i.products.map((item, index) => (
+              <Link to={`/product`} state={item}>
+                <nav>
+                  <section>
+                    <img src={item.image} alt="image" key={index} />
+                  </section>
+                  <h5>{item.name}</h5>
+                  <h6>${item.price}</h6>
+                </nav>
+              </Link>
+            ))}
+          </span>
+        </StyledBoxes>
+      ))}
     </StyledGap>
   );
 }

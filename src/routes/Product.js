@@ -1,7 +1,12 @@
 import StyledProduct from "../Styles/StyledProduct";
 import Top from "../Components/homePageSections/Top";
+import { useLocation } from "react-router-dom";
 
 export default function Product() {
+  const location = useLocation();
+
+  console.log(location.state);
+
   return (
     <>
       <Top />
@@ -9,24 +14,20 @@ export default function Product() {
       <StyledProduct>
         <header>
           <span>
-            <h1>Frankstein Horror Mug</h1>
+            <h1>{location.state.name}</h1>
             <nav>
               <section>
-                <img src="https://bit.ly/3BGmIGo" alt="Product Picture" />
+                <img src={location.state.image} alt="Product Picture" />
               </section>
             </nav>
 
             <h1>
-              Price: <p>$20.80</p>
+              Price: <p>${location.state.price}</p>
             </h1>
           </span>
           <span>
             <h2>Description</h2>
-            <p>
-              With the toughness of bone china and the practicality of an
-              earthenware mug, the ash is one of our most popular bone china
-              shapes.
-            </p>
+            <p>{location.state.description}</p>
             <footer>
               <nobr>Add to cart</nobr>
             </footer>
