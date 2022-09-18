@@ -3,66 +3,25 @@ import Banner from "../Components/homePageSections/Banner";
 import SalesBody from "../Components/homePageSections/SalesBody";
 import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
 import Top from "../Components/homePageSections/Top";
-import { useEffect, useState } from "react";
-import {
-  CartWrapper,
-  CartHeader,
-  CartItemContainer,
-  CardItemHeader,
-  CardItemPrice,
-} from "../Styles/cartStyles";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { getProducts } from "../API/axiosRequests";
-import { CheckoutButton } from "../Components/buttons/CheckoutButton";
+import { useState } from "react";
 
-const HomePage = () => {
+import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
+
+const HomePage = ({ cartItens, setCartItens }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [productList, setProductList] = useState([]);
-  const [cartItens, setCartItens] = useState(
-    () => JSON.parse(localStorage.getItem("cart")) ?? []
-  );
-
-  useEffect(() => {
-    getProducts().then((products) => setProductList(products.data));
-  }, []);
-
   const handleCart = () => {
     setIsCartOpen(true);
-  };
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItens));
-  }, [cartItens]);
-
-  const removeItens = (id) => {
-    const removeId = cartItens.filter((itens) => itens._id !== id);
-    setCartItens(removeId);
   };
 
   return (
     <>
       {isCartOpen && (
-        <CartWrapper isOpen={isCartOpen}>
-          <CartHeader>
-            <p>Shopping Cart</p>
-            <h5 onClick={() => setIsCartOpen(false)}>X</h5>
-          </CartHeader>
-          {cartItens.map((value) => {
-            return (
-              <CartItemContainer>
-                <CardItemHeader>
-                  <h3 onClick={() => removeItens(value._id)}>X</h3>
-                </CardItemHeader>
-                <img src={value.image}></img>
-                <p>{value.name}</p>
-                <CardItemPrice>
-                  <h5>R$ {value.price} </h5>
-                </CardItemPrice>
-              </CartItemContainer>
-            );
-          })}
-          <h3>Total </h3>
-          <CheckoutButton>Close order</CheckoutButton>
-        </CartWrapper>
+        <CheckoutCart
+          cartItens={cartItens}
+          setCartItens={setCartItens}
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+        />
       )}
 
       <RegisterPopUp />
