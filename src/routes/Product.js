@@ -1,6 +1,5 @@
 import StyledProduct from "../Styles/StyledProduct";
 import Top from "../Components/homePageSections/Top";
-<<<<<<< HEAD
 import { useState } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { CheckoutButton } from "../Components/buttons/CheckoutButton";
@@ -12,10 +11,6 @@ import {
   CardItemPrice,
 } from "../Styles/cartStyles";
 import { useLocation } from "react-router-dom";
-
-
-
-
 
 export default function Product() {
   const location = useLocation();
@@ -36,7 +31,6 @@ export default function Product() {
     description: "Televisao 25 polegadas ",
   };
   console.log(location.state);
-
 
   return (
     <>
