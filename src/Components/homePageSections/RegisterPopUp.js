@@ -1,11 +1,18 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import productContext from "./Context";
 
 export default function RegisterPopUp() {
+  const { setVisibility, visibility } = useContext(productContext);
+
+  function handleCloseOutline() {
+    setVisibility("hidden");
+  }
   return (
-    <StyledPopUp>
+    <StyledPopUp visibility={visibility}>
       <div>
-        <table>
+        <table onClick={handleCloseOutline}>
           <ion-icon name="close-outline"></ion-icon>
         </table>
       </div>
@@ -32,8 +39,7 @@ const StyledPopUp = styled.nav`
   z-index: 10;
   top: 55px;
   left: 0;
-  display: none;
-
+  visibility: ${(props) => props.visibility};
   div {
     width: 50px;
     height: 50px;
