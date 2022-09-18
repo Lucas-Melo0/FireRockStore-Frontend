@@ -46,7 +46,6 @@ const HomePage = () => {
             <p>Shopping Cart</p>
             <h5 onClick={() => setIsCartOpen(false)}>X</h5>
           </CartHeader>
-
           {cartItens.map((value) => {
             return (
               <CartItemContainer>
@@ -56,14 +55,12 @@ const HomePage = () => {
                 <img src={value.image}></img>
                 <p>{value.name}</p>
                 <CardItemPrice>
-                  <h5>R$ {value.price} </h5> <IoIosArrowBack /> 1
-                  <IoIosArrowForward />
+                  <h5>R$ {value.price} </h5>
                 </CardItemPrice>
-                <h4>Subtotal : R$ 2500</h4>
               </CartItemContainer>
             );
           })}
-
+          <h3>Total </h3>
           <CheckoutButton>Close order</CheckoutButton>
         </CartWrapper>
       )}
