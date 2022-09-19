@@ -13,9 +13,9 @@ export default function HeaderOne() {
     "https://bit.ly/3qJIumk",
   ];
 
-  // setInterval(function () {
-  //   banner === 4 ? setBanner(0) : setBanner(banner + 1);
-  // }, 5000);
+  setInterval(function () {
+    banner === 4 ? setBanner(0) : setBanner(banner + 1);
+  }, 5000);
 
   return (
     <AddFeature>
