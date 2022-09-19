@@ -11,7 +11,7 @@ export default function SalesBody() {
   const { setCategory } = useContext(productContext);
 
   useEffect(() => {
-    const promise = axios.get("https://firerock.herokuapp.com/products");
+    const promise = axios.get("https://firerock.herokuapp.com/");
     promise.then((res) => {
       setProducts(res.data);
       setCategory(res.data);
