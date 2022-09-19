@@ -34,10 +34,8 @@ export default function RegisterPopUp() {
         </span>
       ) : (
         <span>
-          <h1> Hello, {userName}! </h1>
-          <Link to={`/`}>
-            <div> Orders </div>
-          </Link>
+          <h1> Hello, {userName}! 🎃</h1>
+
           <Link to={`/entrada`}>
             <div> Sign Out </div>
           </Link>
