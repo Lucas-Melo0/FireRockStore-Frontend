@@ -29,7 +29,7 @@ export default function ProductList({ cartItens, setCartItens }) {
   if (products === null) {
     return (
       <LoadingImg>
-        <img src="https://bit.ly/3zAxhsA" alt="Loading" />
+        <img src="https://bit.ly/3BpKxAZ" alt="Loading" />
       </LoadingImg>
     );
   }
