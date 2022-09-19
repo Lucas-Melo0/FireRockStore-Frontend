@@ -12,7 +12,7 @@ export default function RegisterPopUp() {
   }
 
   const auth = JSON.parse(localStorage.getItem("auth"));
-  setUserName(auth.name);
+  setUserName(auth?.name);
 
   const token = localStorage.getItem("auth");
 
