@@ -47,7 +47,7 @@ export default function ProductList({ cartItens, setCartItens }) {
           setIsCartOpen={setIsCartOpen}
         />
       )}
-      <Top handleCart={handleCart} />
+      <Top cartItens={cartItens} handleCart={handleCart} />
       <Banner />
       <StyledProductList>
         <div>All the products in this category</div>

@@ -1,18 +1,23 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import productContext from "./Context";
 
 export default function RegisterPopUp() {
   const { setVisibility, visibility } = useContext(productContext);
   const { userName, setUserName } = useContext(productContext);
-
+  const navigate = useNavigate();
   function handleCloseOutline() {
     setVisibility("hidden");
   }
 
+  const signoutUser = () => {
+    localStorage.removeItem("auth");
+    navigate("/entrada");
+  };
+
   const auth = JSON.parse(localStorage.getItem("auth"));
-  setUserName(auth.name);
+  setUserName(auth?.name);
 
   const token = localStorage.getItem("auth");
 
@@ -36,9 +41,7 @@ export default function RegisterPopUp() {
         <span>
           <h1> Hello, {userName}! 🎃</h1>
 
-          <Link to={`/entrada`}>
-            <div> Sign Out </div>
-          </Link>
+          <div onClick={signoutUser}> Sign Out </div>
         </span>
       )}
     </StyledPopUp>
