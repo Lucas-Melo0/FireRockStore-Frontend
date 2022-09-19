@@ -7,12 +7,17 @@ import {
   CardItemPrice,
 } from "../../Styles/cartStyles";
 import { CheckoutButton } from "../buttons/CheckoutButton";
+import { useState } from "react";
+import { orderCheckout } from "../../API/axiosRequests";
 const CheckoutCart = ({
   cartItens,
   setCartItens,
   isCartOpen,
   setIsCartOpen,
 }) => {
+  const [auth, setAuth] = useState(() =>
+    JSON.parse(localStorage.getItem("auth"))
+  );
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItens));
   }, [cartItens]);
@@ -29,10 +34,20 @@ const CheckoutCart = ({
     cartItens.map((iten) => (result += iten.price));
     return result;
   };
-
+  console.log(cartItens);
   const checkoutOrder = () => {
-    setCartItens([]);
-    setIsCartOpen(false);
+    if (!auth) return alert("Please login before checkout");
+
+    try {
+      const id = cartItens.map((iten) => iten.productId);
+      const category = cartItens.map((iten) => iten.category);
+      orderCheckout({ id, category, token: auth.token }).then(() =>
+        setCartItens([])
+      );
+      setIsCartOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
