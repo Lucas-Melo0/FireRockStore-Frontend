@@ -19,7 +19,7 @@ export default function ProductList({ cartItens, setCartItens }) {
   };
 
   useEffect(() => {
-    const promise = axios.get("https://firerock.herokuapp.com/products");
+    const promise = axios.get("https://firerock.herokuapp.com/");
     promise.then((res) => {
       setProducts(res.data);
       window.scrollTo(0, 0);
@@ -47,7 +47,7 @@ export default function ProductList({ cartItens, setCartItens }) {
           setIsCartOpen={setIsCartOpen}
         />
       )}
-      <Top handleCart={handleCart} />
+      <Top cartItens={cartItens} handleCart={handleCart} />
       <Banner />
       <StyledProductList>
         <div>All the products in this category</div>

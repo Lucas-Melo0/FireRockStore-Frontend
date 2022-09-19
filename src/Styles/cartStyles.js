@@ -68,6 +68,7 @@ const CardItemHeader = styled.div`
   padding: 5px;
   h3 {
     cursor: pointer;
+    color: #000000;
     font-weight: 700;
   }
 `;

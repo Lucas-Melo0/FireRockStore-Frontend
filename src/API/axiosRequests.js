@@ -7,8 +7,8 @@ const userSignin = (data) => {
   return axiosBase.post("/login", data);
 };
 
-const getProducts = () => {
-  return axiosBase.get("/");
+const orderCheckout = (data) => {
+  return axiosBase.post("/order", data);
 };
 
-export { userSignup, userSignin, getProducts };
+export { userSignup, userSignin, orderCheckout };
