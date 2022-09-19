@@ -27,7 +27,7 @@ export default function Product({ cartItens, setCartItens }) {
           setIsCartOpen={setIsCartOpen}
         />
       )}
-      <Top handleCart={handleCart} />
+      <Top cartItens={cartItens} handleCart={handleCart} />
 
       <StyledProduct>
         <header>

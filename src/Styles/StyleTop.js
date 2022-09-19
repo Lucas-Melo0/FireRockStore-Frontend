@@ -27,6 +27,9 @@ const StyleTop = styled.main`
     justify-content: center;
     gap: 10px;
   }
+  p {
+    font-size: 14px;
+  }
 
   aside {
     width: 90%;

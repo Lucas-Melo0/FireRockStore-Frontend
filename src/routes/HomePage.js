@@ -25,7 +25,7 @@ const HomePage = ({ cartItens, setCartItens }) => {
 
       <RegisterPopUp />
       <StyledHP>
-        <Top handleCart={handleCart} />
+        <Top cartItens={cartItens} handleCart={handleCart} />
         <Banner />
 
         <SalesBody />
