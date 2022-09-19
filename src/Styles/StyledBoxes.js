@@ -67,7 +67,6 @@ const StyledBoxes = styled.div`
     justify-content: space-around;
     box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.25);
     cursor: pointer;
-    //gap: 2px;
 
     h5 {
       font-size: 17px;

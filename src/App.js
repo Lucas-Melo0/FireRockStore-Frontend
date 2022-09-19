@@ -11,13 +11,21 @@ import { useState } from "react";
 function App() {
   const [category, setCategory] = useState(null);
   const [visibility, setVisibility] = useState("hidden");
+  const [userName, setUserName] = useState(null);
   const [cartItens, setCartItens] = useState(
     () => JSON.parse(localStorage.getItem("cart")) ?? []
   );
 
   return (
     <productContext.Provider
-      value={{ category, setCategory, setVisibility, visibility }}
+      value={{
+        category,
+        setCategory,
+        setVisibility,
+        visibility,
+        userName,
+        setUserName,
+      }}
     >
       <GlobalStyle />
       <Routes>

@@ -1,5 +1,5 @@
 import axios from "axios";
 
-const axiosBase = axios.create({ baseURL: "http://localhost:5000" });
+const axiosBase = axios.create({ baseURL: "https://firerock.herokuapp.com/" });
 
 export { axiosBase };

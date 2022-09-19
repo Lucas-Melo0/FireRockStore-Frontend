@@ -4,7 +4,6 @@ import SalesBody from "../Components/homePageSections/SalesBody";
 import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
 import Top from "../Components/homePageSections/Top";
 import { useState } from "react";
-
 import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
 
 const HomePage = ({ cartItens, setCartItens }) => {

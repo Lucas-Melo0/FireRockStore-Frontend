@@ -1,6 +1,6 @@
 import StyledHeader from "../../Styles/StyledHeader";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function HeaderOne() {
   const [banner, setBanner] = useState(0);

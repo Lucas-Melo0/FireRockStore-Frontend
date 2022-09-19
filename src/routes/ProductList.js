@@ -7,19 +7,22 @@ import { useState, useEffect } from "react";
 import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
 import LoadingImg from "../Styles/LoadingImg";
 import { useLocation } from "react-router-dom";
+import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
 
 export default function ProductList({ cartItens, setCartItens }) {
   const location = useLocation();
   const [products, setProducts] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
   const handleCart = () => {
     setIsCartOpen(true);
   };
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:5000/productlist");
+    const promise = axios.get("https://firerock.herokuapp.com/products");
     promise.then((res) => {
       setProducts(res.data);
+      window.scrollTo(0, 0);
     });
   }, []);
 
@@ -35,6 +38,7 @@ export default function ProductList({ cartItens, setCartItens }) {
 
   return (
     <>
+      <RegisterPopUp />
       {isCartOpen && (
         <CheckoutCart
           cartItens={cartItens}
@@ -47,21 +51,28 @@ export default function ProductList({ cartItens, setCartItens }) {
       <Banner />
       <StyledProductList>
         <div>All the products in this category</div>
-        <header>
-          {category.map((item, index) =>
-            item.products.map((i) => (
-              <Link to={`/product`} state={i}>
-                <nav>
-                  <section>
-                    <img src={i.image} alt="image" key={index} />
-                  </section>
-                  <h5>{i.name}</h5>
-                  <h6>${i.price}</h6>
-                </nav>
-              </Link>
-            ))
-          )}
-        </header>
+
+        {location.state ? (
+          <header>
+            {category.map((item, index) =>
+              item.products.map((i) => (
+                <Link to={`/product`} state={i}>
+                  <nav>
+                    <section>
+                      <img src={i.image} alt="image" key={index} />
+                    </section>
+                    <h5>{i.name}</h5>
+                    <h6>${i.price}</h6>
+                  </nav>
+                </Link>
+              ))
+            )}
+          </header>
+        ) : (
+          <LoadingImg>
+            <img src="https://bit.ly/3SeHsdT" alt="pick a category" />
+          </LoadingImg>
+        )}
       </StyledProductList>
     </>
   );

@@ -1,14 +1,21 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 import productContext from "./Context";
 
 export default function RegisterPopUp() {
   const { setVisibility, visibility } = useContext(productContext);
+  const { userName, setUserName } = useContext(productContext);
 
   function handleCloseOutline() {
     setVisibility("hidden");
   }
+
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  setUserName(auth.name);
+
+  const token = localStorage.getItem("auth");
+
   return (
     <StyledPopUp visibility={visibility}>
       <div>
@@ -16,14 +23,24 @@ export default function RegisterPopUp() {
           <ion-icon name="close-outline"></ion-icon>
         </table>
       </div>
-      <span>
-        <Link to={`/entrada`}>
-          <div> Sign In </div>
-        </Link>
-        <Link to={`/cadastro`}>
-          <div> Sign Up </div>
-        </Link>
-      </span>
+      {!token ? (
+        <span>
+          <Link to={`/entrada`}>
+            <div> Sign In </div>
+          </Link>
+          <Link to={`/cadastro`}>
+            <div> Sign Up </div>
+          </Link>
+        </span>
+      ) : (
+        <span>
+          <h1> Hello, {userName}! 🎃</h1>
+
+          <Link to={`/entrada`}>
+            <div> Sign Out </div>
+          </Link>
+        </span>
+      )}
     </StyledPopUp>
   );
 }
@@ -34,10 +51,9 @@ const StyledPopUp = styled.nav`
   height: 100%;
   background-color: rgba(245, 241, 247, 0.925);
   border-radius: 5px;
-  // opacity: 0.9;
   position: fixed;
   z-index: 10;
-  top: 55px;
+  //top: 55px;
   left: 0;
   visibility: ${(props) => props.visibility};
   div {
@@ -82,7 +98,7 @@ const StyledPopUp = styled.nav`
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 50vw;
+      width: 170px;
       height: 55px;
       background-color: #040404;
       border-radius: 5px;
@@ -90,6 +106,14 @@ const StyledPopUp = styled.nav`
       font-weight: 700;
       color: #ffffff;
       cursor: pointer;
+      padding-bottom: 25px;
+      padding-right: 10px;
     }
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+    padding: 5px 0;
   }
 `;

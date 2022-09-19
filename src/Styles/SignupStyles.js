@@ -13,12 +13,15 @@ const SignupContainer = styled.div`
     text-align: center;
     margin-top: 25px;
     color: #ffffff;
+    opacity: 0.9;
+    font-size: 23px;
   }
   h1 {
     font-family: "Rubik Moonrocks", cursive;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 75px;
     font-size: 35px;
+    color: white;
     cursor: pointer;
   }
 `;

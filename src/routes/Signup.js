@@ -17,7 +17,7 @@ const Signup = () => {
       navigate("/entrada");
     } catch (err) {
       const { status } = err.response;
-      if (status === 409) return alert("Nome ou email já existentes");
+      if (status === 409) return alert("Name or email already exists.");
       console.log(err);
     }
   };
@@ -36,7 +36,7 @@ const Signup = () => {
           required
           onChange={handleForm}
           name="name"
-          placeholder="Nome"
+          placeholder="Name"
         ></FormInput>
         <FormInput
           required
@@ -49,19 +49,19 @@ const Signup = () => {
           onChange={handleForm}
           type="password"
           name="password"
-          placeholder="Senha"
+          placeholder="Password"
         ></FormInput>
         <FormInput
           required
           onChange={handleForm}
           type="password"
           name="confirmation"
-          placeholder="Confirme a senha"
+          placeholder="Confirm your password"
         ></FormInput>
-        <FormButton>Cadastrar</FormButton>
+        <FormButton>Sign Up</FormButton>
       </CustomForm>
       <Link to={"/entrada"}>
-        <p> Já possui cadastro? ENTRAR</p>
+        <p> Already have an account? Sign in!</p>
       </Link>
     </SignupContainer>
   );
