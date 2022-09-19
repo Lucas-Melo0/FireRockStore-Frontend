@@ -11,7 +11,7 @@ export default function SalesBody() {
   const { setCategory } = useContext(productContext);
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:5000");
+    const promise = axios.get("https://firerock.herokuapp.com/products");
     promise.then((res) => {
       setProducts(res.data);
       setCategory(res.data);
@@ -29,32 +29,34 @@ export default function SalesBody() {
   return (
     <StyledGap>
       {products.map((i, index) => (
-        <StyledBoxes key={index}>
-          <header>
-            <aside>
-              <Link to={`/productlist`} state={i.category}>
-                <h4>{i.title}</h4>
-              </Link>
-              <Link to={`/productlist`} state={i.category}>
-                <h3>See all</h3>
-              </Link>
-            </aside>
-          </header>
+        <>
+          <StyledBoxes key={index}>
+            <header>
+              <aside>
+                <Link to={`/productlist`} state={i.category}>
+                  <h4>{i.title}</h4>
+                </Link>
+                <Link to={`/productlist`} state={i.category}>
+                  <h3>See all</h3>
+                </Link>
+              </aside>
+            </header>
 
-          <span>
-            {i?.products?.map((item, index) => (
-              <Link to={`/product`} state={item}>
-                <nav>
-                  <section>
-                    <img src={item.image} alt="image" key={index} />
-                  </section>
-                  <h5>{item.name}</h5>
-                  <h6>${item.price}</h6>
-                </nav>
-              </Link>
-            ))}
-          </span>
-        </StyledBoxes>
+            <span>
+              {i?.products?.map((item, index) => (
+                <Link to={`/product`} state={item}>
+                  <nav>
+                    <section>
+                      <img src={item.image} alt="image" key={index} />
+                    </section>
+                    <h5>{item.name}</h5>
+                    <h6>${item.price}</h6>
+                  </nav>
+                </Link>
+              ))}
+            </span>
+          </StyledBoxes>
+        </>
       ))}
     </StyledGap>
   );

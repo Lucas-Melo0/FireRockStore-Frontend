@@ -57,7 +57,7 @@ cursor: default;
 }
 
 body {
-background-color: #E5E5E5;
+background-color: #000000;
 }
 `;
 

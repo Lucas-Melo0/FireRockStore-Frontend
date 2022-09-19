@@ -3,10 +3,12 @@ import Top from "../Components/homePageSections/Top";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CheckoutCart } from "../Components/checkoutCar/CheckoutCar";
+import RegisterPopUp from "../Components/homePageSections/RegisterPopUp";
 
 export default function Product({ cartItens, setCartItens }) {
   const location = useLocation();
   const [isCartOpen, setIsCartOpen] = useState(false);
+
   const handleCart = () => {
     setIsCartOpen(true);
   };
@@ -16,6 +18,7 @@ export default function Product({ cartItens, setCartItens }) {
 
   return (
     <>
+      <RegisterPopUp />
       {isCartOpen && (
         <CheckoutCart
           cartItens={cartItens}

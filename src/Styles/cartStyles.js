@@ -16,13 +16,16 @@ const CartWrapper = styled.div`
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffffff;
+  background-color: #0c0c0c;
+  h3 {
+    color: white;
+  }
 `;
 
 const CartHeader = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: #223f54;
+  background-color: #4b4b4b;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
@@ -47,6 +50,7 @@ const CartItemContainer = styled.div`
   border-radius: 5px;
   row-gap: 7px;
   text-align: center;
+  background-color: white;
   img {
     height: 120px;
     width: 120px;
@@ -64,6 +68,7 @@ const CardItemHeader = styled.div`
   padding: 5px;
   h3 {
     cursor: pointer;
+    font-weight: 700;
   }
 `;
 

@@ -3,8 +3,9 @@ import { FormButton } from "../Components/buttons/FormButton";
 import { CustomForm } from "../Components/form/CustomForm";
 import { FormInput } from "../Components/form/FormInput";
 import { userSignin } from "../API/axiosRequests";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+
 const Signin = () => {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Signin = () => {
       navigate("/");
     } catch (err) {
       const { status } = err.response;
-      if (status === 404) return alert("Email ou senha incorretos.");
+      if (status === 404) return alert("Email or password is incorrect.");
     }
   };
   const handleForm = (e) => {
@@ -38,9 +39,12 @@ const Signin = () => {
           name="password"
           required
           type="password"
-          placeholder="Senha"
+          placeholder="Password"
         ></FormInput>
-        <FormButton>Entrar</FormButton>
+        <FormButton>Login</FormButton>
+        <Link to={"/cadastro"}>
+          <p> Don't have an account yet? Sign up!</p>
+        </Link>
       </CustomForm>
     </SignupContainer>
   );

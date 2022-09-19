@@ -50,12 +50,12 @@ const CheckoutCart = ({
             <img src={value.image}></img>
             <p>{value.name}</p>
             <CardItemPrice>
-              <h5>R$ {value.price} </h5>
+              <h5>${value.price} </h5>
             </CardItemPrice>
           </CartItemContainer>
         );
       })}
-      <h3>Total: {itensSum()} </h3>
+      <h3>Total: ${itensSum()} </h3>
       <CheckoutButton onClick={checkoutOrder}>Close order</CheckoutButton>
     </CartWrapper>
   );

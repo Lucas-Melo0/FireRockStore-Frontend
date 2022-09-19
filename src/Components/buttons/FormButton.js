@@ -6,7 +6,7 @@ const FormButton = styled.button`
   height: 46px;
   font-size: 20px;
   text-align: center;
-  color: #ffffff;
+  color: black;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
 
